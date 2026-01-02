@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root to: "home#index"
+  resources :organizations, only: %i[index new create]
+
 end
