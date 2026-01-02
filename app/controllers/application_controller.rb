@@ -39,6 +39,12 @@ class ApplicationController < ActionController::Base
   def require_admin!
     redirect_to root_path, alert: "Access denied" unless current_membership&.owner? || current_membership&.admin?
   end
+  
+  def google_connected?
+    GoogleAccount.exists?
+  end
+
+helper_method :google_connected?
 
   helper_method :current_membership
 
