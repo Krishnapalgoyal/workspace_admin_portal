@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :organizations, only: %i[index new create]
   resource :organization_switch, only: :update
+  resources :organization_members, only: %i[index create]
 end
