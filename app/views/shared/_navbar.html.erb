@@ -7,11 +7,12 @@
     <%= render "shared/org_switcher" %>
 
     <div class="text-sm text-gray-600">
-      <%= current_user.email %>
+      <%= current_user&.email %>
     </div>
 
-    <%= link_to "Logout", destroy_user_session_path,
-        method: :delete,
-        class: "text-red-600 hover:underline" %>
+   <%= button_to "Logout",
+    destroy_user_session_path,
+    method: :delete,
+    class: "text-red-600 hover:underline bg-transparent border-none p-0 cursor-pointer" %>
   </div>
 </nav>

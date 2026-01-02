@@ -1,0 +1,22 @@
+<h1 class="text-2xl font-semibold mb-6">Dashboard</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="rounded bg-white p-6 shadow">
+    <h2 class="font-semibold mb-2">Organization</h2>
+    <p class="text-gray-600"><%= current_organization.name %></p>
+  </div>
+
+  <div class="rounded bg-white p-6 shadow">
+    <h2 class="font-semibold mb-2">Google Workspace</h2>
+
+    <% if google_connected? %>
+      <p class="text-green-600">Connected ✅</p>
+    <% else %>
+      <p class="text-red-600 mb-3">Not Connected</p>
+
+      <%= link_to "Connect Google Workspace",
+          connect_google_path,
+          class: "inline-block rounded bg-blue-600 px-4 py-2 text-white" %>
+    <% end %>
+  </div>
+</div>

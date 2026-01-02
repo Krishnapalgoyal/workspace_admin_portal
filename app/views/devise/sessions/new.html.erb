@@ -1,0 +1,38 @@
+<h1 class="text-2xl font-semibold mb-6 text-center">Sign in</h1>
+
+<%= form_with model: resource,
+              url: session_path(resource_name),
+              local: true do |f| %>
+
+  <div class="mb-4">
+    <%= f.label :email, class: "block text-sm font-medium mb-1" %>
+    <%= f.email_field :email,
+        autofocus: true,
+        class: "w-full rounded border px-3 py-2" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :password, class: "block text-sm font-medium mb-1" %>
+    <%= f.password_field :password,
+        class: "w-full rounded border px-3 py-2" %>
+  </div>
+
+  <div class="flex items-center justify-between mb-4 text-sm">
+    <%= f.check_box :remember_me %>
+    <span>Remember me</span>
+
+    <%= link_to "Forgot password?",
+        new_user_password_path,
+        class: "text-blue-600 hover:underline" %>
+  </div>
+
+  <%= f.submit "Sign in",
+      class: "w-full rounded bg-blue-600 py-2 text-white font-medium" %>
+<% end %>
+
+<p class="mt-6 text-center text-sm">
+  Don’t have an account?
+  <%= link_to "Sign up",
+      new_user_registration_path,
+      class: "text-blue-600 hover:underline" %>
+</p>

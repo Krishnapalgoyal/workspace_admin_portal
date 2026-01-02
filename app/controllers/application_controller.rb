@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :switch_tenant
   before_action :ensure_organization_selected
+  layout :layout_by_resource
 
   private
 
@@ -44,7 +45,15 @@ class ApplicationController < ActionController::Base
     GoogleAccount.exists?
   end
 
-helper_method :google_connected?
+  def layout_by_resource
+    if devise_controller?
+      "auth"
+    else
+      "application"
+    end
+  end
+
+  helper_method :google_connected?
 
   helper_method :current_membership
 

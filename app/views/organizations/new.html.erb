@@ -1,0 +1,12 @@
+<!-- app/views/organizations/new.html.erb -->
+<h1 class="text-2xl font-semibold mb-6">Create Organization</h1>
+
+<%= form_with model: @organization do |f| %>
+  <div class="mb-4">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "w-full rounded border p-2" %>
+  </div>
+
+  <%= f.submit "Create",
+      class: "rounded bg-blue-600 px-4 py-2 text-white" %>
+<% end %>

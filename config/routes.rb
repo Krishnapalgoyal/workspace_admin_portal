@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
   get "home/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,13 +14,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root to: "home#index"
+  root "home#index"
+  get "dashboard", to: "dashboard#index"
   resources :organizations, only: %i[index new create]
   resource :organization_switch, only: :update
   resources :organization_members, only: %i[index create]
   get "google/oauth/connect", to: "google/oauth#connect", as: :connect_google
   get "google/oauth/callback", to: "google/oauth#callback"
+  post "organizations/switch", to: "organizations#switch", as: :switch_organization
   namespace :admin do
     resources :google_users, only: :index
+  end
+
+  resources :organizations do
+    get :settings, on: :member
   end
 end

@@ -26,6 +26,16 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def settings
+    require_admin!
+  end
+
+  def switch
+    org = current_user.organizations.find(params[:organization_id])
+    session[:organization_id] = org.id
+    redirect_back fallback_location: dashboard_path
+  end
+
   private
 
   def org_params
