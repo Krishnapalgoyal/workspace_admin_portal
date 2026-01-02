@@ -1,0 +1,2 @@
+module Google::OauthHelper
+end
