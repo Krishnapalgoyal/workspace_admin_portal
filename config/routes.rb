@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :organization_members, only: %i[index create]
   get "google/oauth/connect", to: "google/oauth#connect", as: :connect_google
   get "google/oauth/callback", to: "google/oauth#callback"
+  namespace :admin do
+    resources :google_users, only: :index
+  end
 end
