@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: "home#index"
   resources :organizations, only: %i[index new create]
-
+  resource :organization_switch, only: :update
 end
