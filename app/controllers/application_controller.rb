@@ -1,7 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :switch_tenant
+  before_action :ensure_organization_selected
 
   private
+
+  def ensure_organization_selected
+    return if request.path.start_with?("/organizations")
+    return if current_organization.present?
+    return unless user_signed_in?
+
+    redirect_to organizations_path, alert: "Please select an organization"
+  end
+
 
   def switch_tenant
     return unless current_organization
