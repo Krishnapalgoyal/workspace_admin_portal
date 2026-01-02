@@ -1,0 +1,15 @@
+<aside class="w-64 bg-white shadow min-h-screen">
+  <nav class="p-4 space-y-2 text-sm">
+    <%= link_to "Dashboard", dashboard_path,
+        class: "block rounded px-3 py-2 hover:bg-gray-100" %>
+
+    <%= link_to "Google Users", admin_google_users_path,
+        class: "block rounded px-3 py-2 hover:bg-gray-100" %>
+
+    <%= link_to "Organization Members", organization_members_path,
+        class: "block rounded px-3 py-2 hover:bg-gray-100" %>
+
+    <%= link_to "Settings", "#",
+        class: "block rounded px-3 py-2 hover:bg-gray-100" %>
+  </nav>
+</aside>
