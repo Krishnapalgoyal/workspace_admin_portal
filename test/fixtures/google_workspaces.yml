@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  google_customer_id: MyString
+  access_token: MyText
+  refresh_token: MyText
+  expires_at: 2026-01-04 13:17:12
+  connected: false
+
+two:
+  organization: two
+  google_customer_id: MyString
+  access_token: MyText
+  refresh_token: MyText
+  expires_at: 2026-01-04 13:17:12
+  connected: false

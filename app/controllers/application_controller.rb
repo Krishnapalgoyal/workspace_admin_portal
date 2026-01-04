@@ -33,6 +33,13 @@ class ApplicationController < ActionController::Base
     )
   end
 
+  def ensure_google_connected
+    return if current_organization&.google_connected?
+
+    redirect_to organizations_path,
+      alert: "Please connect Google Workspace for this organization first"
+  end
+
   def require_owner!
     redirect_to root_path, alert: "Access denied" unless current_membership&.owner?
   end
@@ -42,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
   
   def google_connected?
-    GoogleAccount.exists?
+    current_organization.google_connected?
   end
 
   def layout_by_resource

@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @organizations = current_user.organizations
+    @organizations = current_user.organizations.includes(:google_workspace)
   end
 
   def new
@@ -32,7 +32,7 @@ class OrganizationsController < ApplicationController
 
   def switch
     org = current_user.organizations.find(params[:organization_id])
-    session[:organization_id] = org.id
+    session[:current_organization_id] = org.id
     redirect_back fallback_location: dashboard_path
   end
 

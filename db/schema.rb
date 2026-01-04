@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_02_110134) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_04_074712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_02_110134) do
     t.string "refresh_token"
     t.text "scopes"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "google_workspaces", force: :cascade do |t|
+    t.text "access_token"
+    t.boolean "connected", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.string "google_customer_id"
+    t.bigint "organization_id", null: false
+    t.text "refresh_token"
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_google_workspaces_on_organization_id"
   end
 
   create_table "organization_memberships", force: :cascade do |t|
@@ -51,6 +63,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_02_110134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "google_workspaces", "organizations"
   add_foreign_key "organization_memberships", "organizations"
   add_foreign_key "organization_memberships", "users"
 end

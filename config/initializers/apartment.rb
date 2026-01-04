@@ -3,6 +3,7 @@ Apartment.configure do |config|
     User
     Organization
     OrganizationMembership
+    GoogleWorkspace
   ]
 
   config.use_schemas = true
